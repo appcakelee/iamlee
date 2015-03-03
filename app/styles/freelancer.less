@@ -146,6 +146,7 @@ header {
 	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-transform: uppercase;
 	font-weight: 700;
+	background-color: #2c3e50;
 	a:focus {
 		outline: none;
 	}
@@ -162,6 +163,12 @@ header {
 .navbar-default,
 .navbar-inverse {
 	border: none;
+}
+.navbar-default {
+	.navbar-brand,
+	.navbar-nav > li > a {
+		color: lighten(@brand-primary, 20%);
+	}
 }
 
 section {
