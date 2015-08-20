@@ -9026,3 +9026,74 @@ footer .footer-below {
   opacity: 0;
   display: none;
 }
+.tech-tags li {
+  background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, #ffffff), color-stop(100%, #f0f0f0));
+  background-image: -webkit-linear-gradient(#ffffff, #f0f0f0);
+  background-image: -moz-linear-gradient(#ffffff, #f0f0f0);
+  background-image: -o-linear-gradient(#ffffff, #f0f0f0);
+  background-image: linear-gradient(#ffffff, #f0f0f0);
+  -moz-border-radius-topright: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -webkit-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1), inset 1px -2px 1px -1px #eeeeee;
+  -moz-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1), inset 1px -2px 1px -1px #eeeeee;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.1), inset 1px -2px 1px -1px #eeeeee;
+  position: relative;
+  display: inline-block;
+  height: 30px;
+  margin-right: 25px;
+  margin-bottom: 15px;
+  border: 1px solid #d4d4d4;
+  border-left: none;
+}
+.tech-tags li span {
+  position: relative;
+  top: 3px;
+  padding: 15px;
+  font-size: 12px;
+  color: #666;
+  cursor: default;
+}
+.tech-tags li:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -9px;
+  z-index: 0;
+  width: 17px;
+  height: 17px;
+  margin-top: -9px;
+  border-right: solid 1px #adadad;
+  border-bottom: solid 1px #d4d4d4;
+  background-image: -webkit-linear-gradient(45deg, #ffffff, #f0f0f0);
+  background-image: -moz-linear-gradient(45deg, #ffffff, #f0f0f0);
+  background-image: -o-linear-gradient(45deg, #ffffff, #f0f0f0);
+  background-image: linear-gradient(45deg, #ffffff, #f0f0f0);
+  -webkit-transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+  -moz-transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+  -ms-transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+  -o-transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+  transform: rotate(134deg) skewX(-10deg) skewY(-10deg);
+}
+.tech-tags li:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  margin-top: -3px;
+  z-index: 1;
+  width: 4px;
+  height: 4px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
