@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           optimization: 2
         },
         files: {
-          "css/styles.css": "less/styles.less" // destination file and source file
+          "src/css/styles.css": "less/styles.less" // destination file and source file
         }
       }
     },
@@ -22,8 +22,24 @@ module.exports = function(grunt) {
           nospawn: true
         }
       }
+    },
+    copy: {
+      files: {
+        cwd: 'src',  // set working folder / root to copy
+        src: '**/*',           // copy all files and subfolders
+        dest: 'dist',    // destination folder
+        expand: true           // required when using cwd
+      }
+    },
+    deploy: {
+
     }
   });
 
+
+
   grunt.registerTask('default', ['less', 'watch']);
+  grunt.registerTask('copy', ['copy']);
+  grunt.registerTask("deploy', 'less', 'copy', 'deploy");
+  grunt.loadNpmTasks('grunt-contrib-copy');
 };
