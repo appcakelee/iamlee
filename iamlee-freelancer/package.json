@@ -6,6 +6,8 @@
     "grunt-contrib-copy": "^0.8.1",
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-ssh": "^0.12.6",
+    "grunt-ssh-deploy": "^0.3.1",
     "jit-grunt": "^0.9.1"
   }
 }
