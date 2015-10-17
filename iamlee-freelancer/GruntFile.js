@@ -56,6 +56,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['less', 'watch']);
   grunt.registerTask('copy', ['copy']);
   grunt.registerTask('build', ['less', 'copy', 'sftp']);
+  grunt.registerTask('dev', ['less', 'copy']);
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-ssh');

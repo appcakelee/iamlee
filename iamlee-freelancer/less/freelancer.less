@@ -33,9 +33,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-	text-align: center;
 	background: @brand-success;
 	color: @text-color;
+	background: url(../img/poster.jpg) no-repeat 0 center;
+	background-size: cover;
 	.container {
 		padding-top: 100px;
 		padding-bottom: 50px;
@@ -45,6 +46,14 @@ header {
 		margin: 0 auto 20px;
 	}
 	.intro-text {
+		font-family: @iamlee-hand;
+		padding-top: 20px;
+		@media(min-width: 520px) {
+			padding-top: 108px;
+		}
+		@media(min-width: 720px) {
+			padding-top: 170px;
+		}
 		.name {
 			display: block;
 			font-family: @iamlee-font-bold;
@@ -54,7 +63,7 @@ header {
 			letter-spacing: 0.05em;
 		}
 		.skills {
-			font-size: 1.25em;
+			font-size: 1.5em;
 			font-weight: 300;
 		}
 	}
@@ -71,7 +80,7 @@ header {
 				font-size: 2.75em;
 			}
 			.skills {
-				font-size: 1.75em;
+				font-size: 2.5em;
 			}
 		}
 	}
@@ -126,7 +135,7 @@ header {
 	border: none;
 }
 .navbar-default {
-	background-color: #555;
+	background-color: rgba(0,0,0,0.7);
 	.navbar-brand {
 		color: @brand-success;
 	}
