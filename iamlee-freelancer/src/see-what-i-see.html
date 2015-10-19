@@ -24,25 +24,6 @@
        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
 
-   <style>
-    .grid div img {
-      width: 100%;
-    }
-    .hide-text {
-      text-indent: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      height: 0;
-      margin: 0;
-      }
-      #dynamicSection {
-        padding-bottom: 0;
-      }
-      .no-gutter > [class*='col-'] {
-        padding-right:0;
-        padding-left:0;
-    }
-   </style>
 
 </head>
 
@@ -86,10 +67,11 @@
 
   <!-- Portfolio Grid Section -->
   <section id="dynamicSection" class="row" ng-controller="ImgListCtrl">
-    <div class="grid no-gutter">
-        <div class="col-md-4" ng-repeat="item in list.items">
+    <div class="grid">
+        <div class="impression col-md-4" ng-repeat="item in list.items" >
           <h1 class="hide-text">{{ item.title }}</h1>
-          <img ng-src="{{item.media.m | split}}"/><!-- changing image path to get larger images -->
+          <img class="showImg" ng-src="{{item.media.m | split}}"/><!-- changing image path to get larger images -->
+
         </div>
     </div>
   </section>
@@ -160,6 +142,23 @@
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
 
+  <script>
+
+    $(window).load(function(){
+    		//initialize after images are loaded
+        var images = $(".showImg");
+
+        images.each(function( i, images ) {
+          // check each image width and height property if its portrait add a class
+          if(images.naturalHeight > images.naturalWidth) {
+            $(images).addClass("portrait");
+          }
+
+        });
+
+       });
+
+  </script>
 
 
 </body>

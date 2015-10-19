@@ -496,3 +496,40 @@ footer {
     -o-border-radius: 2px;
     border-radius: 2px;
 }
+
+	.hide-text {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		height: 0;
+		margin: 0;
+	}
+	#dynamicSection {
+		padding-bottom: 0;
+		background-color: #fafafa;
+		text-align: center;
+	}
+
+	.impression {
+		border: 10px solid white;
+		position: relative;
+		width: 400px;
+		height: 400px;
+		overflow: hidden;
+		display: inline-block;
+		float: none;
+		img {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			height: 100%;
+			width: auto;
+			-webkit-transform: translate(-50%,-50%);
+					-ms-transform: translate(-50%,-50%);
+							transform: translate(-50%,-50%);
+			&.portrait {
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
