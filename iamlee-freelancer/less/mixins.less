@@ -7,6 +7,22 @@
 	letter-spacing: @letterSpacing;
 }
 
+.boxShadow(@sizes: 0; @opacity: 0;) {
+	// top right bottom left; rgba opacity
+	-webkit-box-shadow: @sizes rgba(0,0,0,@opacity);
+	-moz-box-shadow: @sizes rgba(0,0,0,@opacity);
+	box-shadow: @sizes rgba(0,0,0,@opacity);
+	}
+
+.rotate(@rotate; @skewX; @skewY) {
+	// rotate transform enter rotation, skewx and skewy values as degrees
+	-webkit-transform: rotate(unit(@rotate, deg)) skewX(unit(@skewX, deg)) skewY(unit(@skewY, deg));
+	-moz-transform: rotate(unit(@rotate, deg)) skewX(unit(@skewX, deg)) skewY(unit(@skewY, deg));
+	-ms-transform: rotate(unit(@rotate, deg)) skewX(unit(@skewX, deg)) skewY(unit(@skewY, deg));
+	-o-transform: rotate(unit(@rotate, deg)) skewX(unit(@skewX, deg)) skewY(unit(@skewY, deg));
+	transform: rotate(unit(@rotate, deg)) skewX(unit(@skewX, deg)) skewY(unit(@skewY, deg));
+}
+
 .button-variant(@color; @background; @border) {
 	color: @color;
 	background-color: @background;
