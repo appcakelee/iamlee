@@ -527,12 +527,22 @@ footer {
 		}
 	}
 
+	.glyphicon {
+		color: @white;
+	}
+
+	.hideElement {
+		display: none;
+	}
+
 	.photoblog {
 		.modal-dialog {
 			width: 90%;
 			margin: 0 auto;
 			.modal-content {
 				background-color: transparent;
+				.boxShadow();
+				border: 0 none;
 				.modal-body {
 					padding: 0;
 					.relativeBox {
@@ -575,7 +585,14 @@ footer {
 		}
 	}
 
-.navbar-default .navbar-nav>li.switch-view>a:hover,
-.navbar-default .navbar-nav>li.switch-view>a:focus {
-	color: #fafafa;
-}
+	li.switch-view {
+		float: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+		span {
+			cursor: pointer;
+			padding: 15px 0;
+		}
+	}

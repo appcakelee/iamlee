@@ -3,6 +3,27 @@
 
 <head>
 
+  <!--
+      site: iamlee.co.uk
+      page: Photo blog page
+      role: Fetch data from API using javascript
+      skills: Javascrript, Angular, CSS, HTML, Handlebars, Bootstrap
+      job list and statuses
+
+      - DONE -
+        get feed from flickr
+        display feed via angular
+
+      - TO Do -
+        display larger image on click in modal
+        style feed in an attractive way
+        link to page from homepage via lab link
+        refactor less to sass (site wide)
+        refactor page with angular partial views
+        add second view for photos to show a layout switch
+
+  -->
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +48,7 @@
 
 </head>
 
-<body id="page-top" class="index" >
+<body id="page-top" class="photoblog" >
 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -49,6 +70,10 @@
           <li class="hidden">
             <a href="#page-top"></a>
           </li>
+          <li class="switch-view page-scroll">
+            <span class="glyphicon glyphicon-th hideElement" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+          </li>
           <li class="page-scroll">
             <a href="#portfolio">Portfolio</a>
           </li>
@@ -68,12 +93,31 @@
   <!-- Portfolio Grid Section -->
   <section id="dynamicSection" class="row" ng-controller="ImgListCtrl">
     <div class="grid">
-        <div class="impression col-md-4" ng-repeat="item in list.items" >
+        <div class="impression" ng-repeat="item in list.items" data-toggle="modal" data-target="#photo{{$index+1}}" >
           <h1 class="hide-text">{{ item.title }}</h1>
           <img class="showImg" ng-src="{{item.media.m | split}}"/><!-- changing image path to get larger images -->
 
         </div>
     </div>
+
+    <div class="modal fade" id="photo{{$index+1}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  ng-repeat="item in list.items" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="relativeBox">
+              <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+              </div>
+              <img class="showImg" ng-src="{{item.media.m | split}}"/><!-- changing image path to get larger images -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- Footer -->
@@ -145,18 +189,22 @@
   <script>
 
     $(window).load(function(){
-    		//initialize after images are loaded
-        var images = $(".showImg");
+  		//initialize after images are loaded
+      var images = $(".showImg");
 
-        images.each(function( i, images ) {
-          // check each image width and height property if its portrait add a class
-          if(images.naturalHeight > images.naturalWidth) {
-            $(images).addClass("portrait");
-          }
+      images.each(function( i, images ) {
+        // check each image width and height property if its portrait add a class
+        if(images.naturalHeight > images.naturalWidth) {
+          $(images).addClass("portrait");
+        }
+      });
 
-        });
+      $('.switch-view span').click(function(){
+        $('#dynamicSection').toggleClass('altView');
+        $('.switch-view span').toggleClass('hideElement'); // dont use $(this) as need to change both spans
+      });
 
-       });
+    });
 
   </script>
 
