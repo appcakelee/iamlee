@@ -1,3 +1,12 @@
+.font(@family: @iamlee-font-bold; @weight: normal; @size: initial; @lineHeight: inherit; @letterSpacing: normal;) {
+	// create font block required field is font family, then use properties in order weight, size, lineHeight, letterspacing
+	font-family: @family;
+	font-weight: @weight;
+	font-size: @size;
+	line-height: @lineHeight;
+	letter-spacing: @letterSpacing;
+}
+
 .button-variant(@color; @background; @border) {
 	color: @color;
 	background-color: @background;
@@ -34,4 +43,12 @@
 		color: @background;
 		background-color: @color;
 	}
+}
+
+.borderRadius(@val) {
+	-webkit-border-radius: @val;
+	-moz-border-radius: @val;
+	-ms-border-radius: @val;
+	-o-border-radius: @val;
+	border-radius: @val;
 }
