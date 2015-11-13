@@ -1,112 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="iamleeFlickr">
 
-<head></head>
+<head>
+
+	<!--
+
+	Refactor this into angular code
+
+	-->
+
+	<style>
+	.instagram-wrap {
+		float: left;
+	}
+	</style>
+
+</head>
+
 <body>
 
-<div id="instagram"></div>
-<div class='clearfix'></div>
-<!-- button -->
-<div id="showMore">
-	<div class='clearfix '><a id='more' next_url='"+next_url+"' href='#'>[Load More]</a></div>
-</div>
-<script src="js/jquery.js"></script>
+	<div id="instagram"></div>
+	<div class='clearfix'></div>
+	<!-- button -->
+	<div id="showMore">
+		<div class='clearfix '><a id='more' next_url='"+next_url+"' href='#'>[Load More]</a></div>
+	</div>
+	<script src="js/jquery.js"></script>
 
-<script type="text/javascript" >
-////////////////////////////////
-//
-// CONFIGURATION VARIABLES http://stuffthatspins.com/2014/03/11/display-instagram-hashtag-and-user-picture-stream-really-easy-with-jquery-and-json/
-//
-////////////////////////////////
+	<script type="text/javascript">
+		var access_token = "1792054.0f4b1bb.3be142e74d3c402687c97b531c73d85c"; //*** YOU NEED TO GET YOUR OWN ACCESS TOKEN FROM INSTAGRAM
+		//http://instagram.com/developer/authentication/
+		//http://dmolsen.com/2013/04/05/generating-access-tokens-for-instagram/
 
-var access_token = "1792054.0f4b1bb.3be142e74d3c402687c97b531c73d85c"; //*** YOU NEED TO GET YOUR OWN ACCESS TOKEN FROM INSTAGRAM
-//http://instagram.com/developer/authentication/
-//http://dmolsen.com/2013/04/05/generating-access-tokens-for-instagram/
+		var resolution = "thumbnail"; // resolution: low_resolution, thumbnail, standard_resolution
+		var user_id = "1792054"; //userid
+		var hashtag = ""; // #hashtag
+		var last_url = "";
 
-var resolution = "thumbnail"; // resolution: low_resolution, thumbnail, standard_resolution
-var user_id = "1792054"; //userid
-var hashtag = "racehungry"; // #hashtag
-var last_url = "";
+		// HASHTAG URL - USE THIS URL FOR HASHTAG PICS
+		// var start_url = "https://api.instagram.com/v1/tags/"+hashtag+"/media/recent/?access_token="+access_token;
+		// USER URL - USE THIS URL FOR USER PICS
+		var start_url = "https://api.instagram.com/v1/users/" + user_id + "/media/recent/?access_token=" + access_token;
 
-//HASHTAG URL - USE THIS URL FOR HASHTAG PICS
-//var start_url = "https://api.instagram.com/v1/tags/"+hashtag+"/media/recent/?access_token="+access_token;
-//USER URL - USE THIS URL FOR USER PICS
-var start_url = "https://api.instagram.com/v1/users/"+user_id+"/media/recent/?access_token="+access_token;
+		//https://api.instagram.com/v1/tags/racehungry/media/recent?access_token=1836…6303057241113856435_1395676110362&_=1395676128688&max_tag_id=1343521624608
 
-//https://api.instagram.com/v1/tags/racehungry/media/recent?access_token=1836…6303057241113856435_1395676110362&_=1395676128688&max_tag_id=1343521624608
+		function loadEmUp(next_url) {
 
-function loadEmUp(next_url){
+			//console.log("loadEmUp url:" + next_url);
+			url = next_url;
 
-	//console.log("loadEmUp url:" + next_url);
-	url = next_url;
+			$(function() {
+				$.ajax({
+					type: "GET",
+					dataType: "jsonp",
+					cache: false,
+					url: url,
+					success: function(data) {
 
-	$(function() {
-	    $.ajax({
-		    	type: "GET",
-		        dataType: "jsonp",
-		        cache: false,
-		        url: url ,
-		        success: function(data) {
+						next_url = data.pagination.next_url;
+						//count = data.data.length;
+						//three rows of four
+						count = 20;
 
-		  		next_url = data.pagination.next_url;
-		  		//count = data.data.length;
-		  		//three rows of four
-		  		count = 20;
+						//uncommment to see da codez
+						//console.log("count: " + count );
+						//console.log("next_url: " + next_url );
+						//console.log("data: " + JSON.stringify(data) );
 
-		  		//uncommment to see da codez
-		        //console.log("count: " + count );
-		        //console.log("next_url: " + next_url );
-				//console.log("data: " + JSON.stringify(data) );
-
-	            for (var i = 0; i < count; i++) {
-						if (typeof data.data[i] !== 'undefined' ) {
-						//console.log("id: " + data.data[i].id);
-							$("#instagram").append("<div class='instagram-wrap' id='pic-"+ data.data[i].id +"' ><a target='_blank' href='" + data.data[i].link +"'><span class='likes'>"+data.data[i].likes.count +"</span><img class='instagram-image' src='" + data.data[i].images.low_resolution.url +"' /></a></div>"
-						);
+						for (var i = 0; i < count; i++) {
+							if (typeof data.data[i] !== 'undefined') {
+								//console.log("id: " + data.data[i].id);
+								$("#instagram").append("<div class='instagram-wrap' id='pic-" + data.data[i].id + "' ><a target='_blank' href='" + data.data[i].link + "'><span class='likes'>" + data.data[i].likes.count + "</span><img class='instagram-image' src='" +
+									data.data[i].images.low_resolution.url + "' /></a></div>"
+								);
+							}
 						}
-	      		}
 
-		  		console.log("next_url: " + next_url);
-		  		$("#showMore").hide();
-		  		if (typeof next_url === 'undefined' || next_url.length < 10 ) {
-			  		console.log("NO MORE");
-			  		$("#showMore").hide();
-			  		$( "#more" ).attr( "next_url", "");
-		  		}
+						console.log("next_url: " + next_url);
+						$("#showMore").hide();
+						if (typeof next_url === 'undefined' || next_url.length < 10) {
+							console.log("NO MORE");
+							$("#showMore").hide();
+							$("#more").attr("next_url", "");
+						} else {
+							//set button value
+							console.log("displaying more");
+							$("#showMore").show();
+							$("#more").attr("next_url", next_url);
+							last_url = next_url;
 
-
-	      		else {
-			        //set button value
-			        console.log("displaying more");
-			        $("#showMore").show();
-			        $( "#more" ).attr( "next_url", next_url);
-			        last_url = next_url;
-
-	      		}
-	        }
-	    });
-	});
-}
+						}
+					}
+				});
+			});
+		}
 
 
+		//CALL THE SCRIPT TO START...
+		$(document).ready(function() {
+
+			//APPEND LOAD MORE BUTTON TO THE BODY...
+			$("#more").click(function() {
+				var next_url = $(this).attr('next_url');
+				loadEmUp(next_url);
+				return false;
+			});
+
+			//start your engines
+			loadEmUp(start_url);
 
 
-//CALL THE SCRIPT TO START...
-$( document ).ready(function() {
-
-	//APPEND LOAD MORE BUTTON TO THE BODY...
-	$("#more" ).click(function() {
-		var next_url = $(this).attr('next_url');
-		loadEmUp(next_url);
-		return false;
-	});
-
-	//start your engines
-	loadEmUp(start_url);
-
-
-});
-
-</script>
+		});
+	</script>
 </body>
+
 </html>

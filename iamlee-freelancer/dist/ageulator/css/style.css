@@ -1,0 +1,93 @@
+html {
+  font-size: 62.5%;
+  /* Sets up the Base 10 stuff */ }
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: none !important; }
+
+body {
+  background-color: #BD0039;
+  color: white; }
+
+.ageulator *:focus {
+  background-color: black;
+  color: #BD0039; }
+.ageulator h1, .ageulator h2, .ageulator h3 {
+  font-family: "Love Ya Like A Sister", cursive; }
+.ageulator h1 {
+  margin-top:  0;
+  font-size:  20px;
+  font-size:  2rem; }
+  @media (min-width: 768px) {
+    .ageulator h1 {
+      font-size:  36px;
+      font-size:  3.6rem; } }
+  .ageulator h1 .glyphicon {
+    display: block;
+    margin:  0 0 20px 0;
+    margin:  2rem;
+    font-size:  100px;
+    font-size:  10rem; }
+    @media (min-width: 768px) {
+      .ageulator h1 .glyphicon {
+        margin:  30px 0;
+        margin:  3rem;
+        font-size:  150px;
+        font-size:  15rem; } }
+.ageulator h2 {
+  font-size:  16px;
+  font-size:  1.6rem; }
+.ageulator .row {
+  margin:  0 0 30px 0;
+  margin:  3rem; }
+  @media (min-width: 768px) {
+    .ageulator .row {
+      margin:  30px 0;
+      margin:  3rem; } }
+  .ageulator .row div div {
+    margin:  5px;
+    margin:  0.5rem; }
+    @media (min-width: 768px) {
+      .ageulator .row div div {
+        margin: auto; } }
+.ageulator input {
+  padding:  23px 16px;
+  padding:  2.3rem 1.6rem;
+  position: relative;
+  top: 1px; }
+.ageulator input, .ageulator select {
+  display: inline-block;
+  background-color: #8a002a;
+  border: 0 none;
+  box-shadow: none;
+  color: black;
+  font-size:  20px !important;
+  font-size:  2rem !important; }
+.ageulator select {
+  -webkit-appearance: initial;
+  line-height:  24px;
+  line-height:  2.4rem; }
+.ageulator .btn-primary {
+  color: black;
+  background-color: #8a002a;
+  border: 0 none;
+  font-size: 18px;
+  font-size: 1.8rem;
+  padding: 10px 18px;
+  text-transform: uppercase; }
+  .ageulator .btn-primary:active, .ageulator .btn-primary:hover {
+    background-color: black;
+    color: #BD0039; }
+.ageulator .result h1 {
+  font-size:  16px;
+  font-size:  1.6rem;
+  line-height:  24px;
+  line-height:  2.4rem; }
+.ageulator .result span {
+  font-family: "Love Ya Like A Sister", cursive;
+  font-size:  20px;
+  font-size:  2rem; }
+
+/*# sourceMappingURL=style.css.map */
